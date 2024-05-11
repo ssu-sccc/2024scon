@@ -1,0 +1,45 @@
+\def\probtitle{미로 탈출}
+\def\probno{D} % 문제 번호
+
+\begin{problem}{\probno{}. \probtitle{}}
+
+주원이는 방 탈출을 하던 중 미로에 도착했다. 미로는 일렬로 놓인 $N$개의 방으로 이루어져 있으며, $i$번 방과 $i+1$번 방은 서로 인접해 있다$(1 \leq i < N)$. 또한, 각 방에 스위치가 하나씩 있어, 주원이는 입구가 있는 $S$번 방에서 출발하여 모든 스위치를 누르고, 출구가 있는 $E$번 방으로 이동하여 탈출해야 한다.
+
+주원이는 두 가지 이동 방법을 사용할 수 있다. 첫 번째는 $0$ 만큼의 비용을 소모해 인접한 방으로 이동하는 것이고, 두 번째는 $1$ 만큼의 비용을 소모해 $1$번 또는 $N$번 방으로 순간 이동하는 것이다. 두 이동 방법 모두 매번 1 만큼의 시간이 소요된다. 스위치를 누르는 건 매번 0 만큼의 시간이 소요된다.
+
+방 탈출에서 탈출하기 위해선 시간을 잘 관리해야 하므로 주원이는 최대한 빠르게 미로를 탈출하는 방법을 찾으려고 한다. 기록을 세우고 싶은 주원이를 위해서 가장 빠르게 미로를 탈출하는 방법 중 최소 비용으로 탈출하는 방법을 찾아주자.
+
+\InputFile
+
+첫째 줄에 테스트 케이스의 개수 $T$가 주어진다.
+
+다음 줄부터 각 테스트 케이스마다 $N$, $S$, $E$이 한 줄에 공백으로 구분되어 주어진다.
+
+\OutputFile
+
+각 테스트 케이스에 대해 가능한 최소 비용을 한 줄에 출력한다.
+
+\Constraints
+
+\begin{itemize}[topsep=0pt,noitemsep]
+    \item $1 \leq T \leq 10^4$
+    \item $2 \leq N \leq 10^9$
+    \item $1 \leq S, E \leq N$
+    \item $S \neq E$
+    \item 입력으로 주어지는 수는 모두 정수이다.
+\end{itemize}
+
+\Example
+
+\begin{example}
+    \exmpfile{./example/01.in.txt}{./example/01.out.txt}%
+\end{example}
+
+% 예제 설명
+3번 테스트 케이스의 경우, $3 \rightarrow 4 \Rightarrow 1 \rightarrow 2 \Rightarrow 7 \rightarrow 6 \rightarrow 5$ 순서대로 이동해서 최단 시간일 때의 최소 비용으로 미로에서 탈출할 수 있다. 두 줄로 표시된 화살표가 순간이동을 쓴 시점이다.
+% \newpage
+
+% \Notes
+% 정답이 32비트 정수 범위를 벗어날 수 있으므로 C/C++에서는 long long 타입, Java에서는 long 타입을 사용하는 것을 권장한다.
+
+\end{problem}

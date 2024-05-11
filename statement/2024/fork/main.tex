@@ -1,0 +1,44 @@
+\def\probtitle{아이템 2}
+\def\probno{H} % 문제 번호
+
+\begin{problem}{\probno{}. \probtitle{}}
+
+좌우로 무한히 긴 수직선 위에 $N$개의 아이템이 떨어져 있다. $i$번째 아이템의 위치는 $i$이며, $A_i$의 가치를 가지고 있다.
+
+주원이에겐 길이가 $K$인 집게가 있는데, 이 집게를 이용하면 주원이가 지정한 정수 좌표 $x(-10^9 \le x \le 10^9)$를 기준으로 $x$부터 $x+K-1$까지의 범위에 있는 아이템을 모두 줍는다. 주운 아이템은 그 자리에서 사라지며 주운 아이템은 다시 내려놓을 수 없다. 주원이는 집게를 원하는 만큼 사용해 주운 아이템의 가치의 합이 최대가 되도록 만들고 싶다.
+
+주원이가 주운 아이템 가치의 합으로 가능한 값 중 최댓값을 찾아보자.
+
+\InputFile
+
+첫째 줄에 아이템의 개수 $N$와 집게의 길이 $K$가 주어진다.
+
+둘째 줄에 아이템의 가치 $A_1, A_2, \cdots, A_N$이 차례대로 공백으로 구분되어 주어진다.
+
+\OutputFile
+
+주운 아이템 가치의 합으로 가능한 값 중 최댓값을 출력한다.
+
+\Constraints
+
+\begin{itemize}[topsep=0pt,noitemsep]
+    \item $1 \leq K \leq N \leq 500\,000$
+    \item $-500\,000 \leq A_i \leq 500\,000$ $(1 \leq i \leq N)$
+    \item 입력으로 주어지는 수는 모두 정수이다.
+\end{itemize}
+
+\Example
+
+\begin{example}
+    \exmpfile{./example/01.in.txt}{./example/01.out.txt}%
+    \exmpfile{./example/02.in.txt}{./example/02.out.txt}%
+\end{example}
+
+두 번째 예제에서 $x=-3$과 $x=5$에서 한 번씩 집게를 사용하면 주운 아이템의 가치의 합을 2로 만들 수 있다.
+
+% \newpage
+
+\Notes
+정답이 32비트 정수 범위를 벗어날 수 있으므로 C/C++에서는 long long 타입, Java에서는 long 타입을 사용하는 것을 권장한다.
+
+\end{problem}

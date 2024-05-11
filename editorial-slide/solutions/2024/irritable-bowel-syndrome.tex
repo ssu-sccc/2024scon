@@ -1,0 +1,24 @@
+\def\probno{A}
+\def\probtitle{과민성 대장 증후군}
+
+\section{\probno{}. \probtitle{}}
+
+\begin{frame} % No title at first slide
+    \sectiontitle{\probno{}}{\probtitle{}}
+    \sectionmeta{
+        \texttt{implementation, simulation}\\
+        출제진 의도 -- \textbf{\color{acbronze}Easy}
+    }
+    \begin{itemize}
+        \item 처음 푼 팀: \textbf{세스콘}, 1분
+        \item 처음 푼 팀(Open Contest): \textbf{riroan}, 0분
+        \item 출제자: 유상원
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\probno{}. \probtitle{}}
+    \begin{itemize}
+        \item $i$번째 날까지 누적된 스트레스 양을 $S_i$라고 하면, $S_i = \max(S_{i-1} + A_i, 0)$입니다.
+        \item $1 \le i \le N$이면서 $S_i \ge M$을 만족하는 $i$의 개수를 구하면 됩니다.
+    \end{itemize}
+\end{frame}

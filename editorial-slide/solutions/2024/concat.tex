@@ -1,0 +1,31 @@
+\def\probno{C}
+\def\probtitle{온데간데없을뿐더러}
+
+\section{\probno{}. \probtitle{}}
+
+\begin{frame} % No title at first slide
+    \sectiontitle{\probno{}}{\probtitle{}}
+    \sectionmeta{
+        \texttt{math, arithmetic}\\
+        출제진 의도 -- \textbf{\color{acbronze}Easy}
+    }
+    \begin{itemize}
+        \item 처음 푼 팀: \textbf{세스콘}, 4분
+        \item 처음 푼 팀(Open Contest): \textbf{nflight11}, 1분
+        \item 출제자: 나정휘
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\probno{}. \probtitle{}}
+    \begin{itemize}
+        \item $N$개의 양의 정수 $A_1, A_2, \cdots, A_N$이 주어지면, 이들을 모두 이어 붙인 수를 구해야 합니다.
+        \item $L_i = \lfloor \log_{10} A_i \rfloor + 1$이라고 정의합시다.
+        \item $A_1, A_2, \cdots, A_i$를 이어붙인 결과 $S_i$는 $S_i = S_{i-1} \times 10^{L_i} + A_i$를 이용해 계산할 수 있습니다.
+        \item $L_i$는 다양한 방법으로 구할 수 있습니다.
+        \begin{itemize}
+            \item \texttt{log10()} 함수 사용
+            \item 문자열로 변환한 뒤 길이 계산
+            \item $1 \le A_i \le 99$인 점을 이용해 \texttt{(A[i] < 10 ? 1 : 2)} 로 계산
+        \end{itemize}
+    \end{itemize}
+\end{frame}

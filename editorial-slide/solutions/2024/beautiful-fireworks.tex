@@ -1,0 +1,64 @@
+\def\probno{I}
+\def\probtitle{불꽃놀이의 이름다움}
+
+\section{\probno{}. \probtitle{}}
+
+\begin{frame} % No title at first slide
+    \sectiontitle{\probno{}}{\probtitle{}}
+    \sectionmeta{
+        \texttt{trees, graph\_traversal, dp\_tree}\\
+        출제진 의도 -- \textbf{\color{acgold}Hard}
+    }
+    \begin{itemize}
+        \item 처음 푼 팀: \textbf{N/A}, N/A분
+        \item 처음 푼 팀(Open Contest): \textbf{dkim110807}, 28분
+        \item 출제자: 박찬솔
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\probno{}. \probtitle{}}
+    \begin{itemize}
+        \item 스위치를 설치하는 $N$가지 방법에 대해 매번 계산하면 $O(N^2)$이 되어 시간 초과를 받습니다.
+        % \item 모든 정점에 대해 스위치를 설치한 후 직접 불꽃놀이의 아름다움 값을 계산하면 $O(N^2)$으로 시간 초과를 받습니다.
+        \item 이전에 계산한 \textbf{폭죽의 아름다움} 값을 재사용해서 중복 계산을 피하는 방법을 생각해 봅시다.
+        % \item 따라서, 이전에 계산한 폭죽의 아름다움 값을 재사용하여 중복하는 계산이 없도록 최적화를 해보겠습니다.
+        \vspace{5mm}
+        \item 처음 스위치를 설치한 정점을 $a$라고 합시다.
+        \item $a$를 기준으로 나눠지는 컴포넌트 $C_i$에 대해, 아래 정보를 저장합니다.
+        % \item $a$를 기준으로 나눠지는 각 컴포넌트 $C_i$에 대하여 다음의 정보를 저장합니다. (단, $i$는 $C_i$에 포함되는 정점 중 $a$와 인접한 정점)
+        \begin{itemize}
+            \item $weights(a, i)$ = $C_i$에 속한 모든 정점 $c$의 $W_c$값의 합
+            % \item $weights(a, i)$ = $C_i$에 속한 모든 정점 $c$에 대하여 $W_c$의 합
+            \item 단, $i$는 $C_i$에 속한 정점 중 $a$와 인접한 정점의 번호
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\probno{}. \probtitle{}}
+    \begin{itemize}
+        \item 이제 $a$와 인접한 정점 $b$에 스위치를 설치하려고 합니다.
+        \item 정점 $b$를 포함하는 컴포넌트 $C_b$와 그렇지 않은 컴포넌트 $C_i$로 나눠서 생각해 봅시다.
+        \item Case 1. 정점 $b$를 포함하는 컴포넌트 $C_b$:
+        \begin{itemize}
+            \item $C_b$에 속한 모든 정점 $c$에 대해, $D(a, c)$가 1씩 \textbf{감소}합니다.
+            \item 따라서 스위치가 $a$에 있을 때의 답에서 $weights(a, b)$를 빼야 합니다.
+            % \item 따라서, $a$가 스위치였을 때의 답에서 $weights(a, b)$를 빼주면 됩니다.
+        \end{itemize}
+        \item Case 2. $C_b$를 제외한 나머지 컴포넌트 $C_i$:
+        \begin{itemize}
+            \item $C_i$에 속한 모든 정점 $c$에 대해, $D(a, c)$가 1씩 \textbf{증가}합니다.
+            \item 따라서 스위치가 $a$에 있을 때의 답에서 $weights(a, i)$를 더해야 합니다.
+            % \item 따라서, $a$가 스위치였을 때의 답에서 $weights(a, i)$를 더하면 됩니다.
+        \end{itemize}
+        \item $a$에 폭죽이 새로 설치되므로, 스위치가 $a$에 있을 때의 답에서 $W_a$를 더해야 합니다.
+        % \item $a$에도 폭죽이 설치되므로, $a$가 스위치였을 때의 답에서 $W_a$를 더합니다.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\probno{}. \probtitle{}}
+    \begin{itemize}
+        \item 인접한 두 정점 $a, b$에 대해, $weights(a, b)$의 값은 DFS 한 번으로 모두 구할 수 있습니다.
+        \item 정점 $a$에 스위치를 설치한 후, 정점 $b$로 스위치를 옮길 때 답은 $O(1)$에 갱신할 수 있습니다.
+        \item 따라서, DFS 두 번으로 $O(N)$ 시간에 전체 문제를 해결할 수 있습니다.
+    \end{itemize}
+\end{frame}

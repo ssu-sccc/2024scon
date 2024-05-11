@@ -1,0 +1,29 @@
+\def\probno{G}
+\def\probtitle{시간표 만들기}
+
+\section{\probno{}. \probtitle{}}
+
+\begin{frame} % No title at first slide
+    \sectiontitle{\probno{}}{\probtitle{}}
+    \sectionmeta{
+        \texttt{bruteforcing, implementation}\\
+        출제진 의도 -- \textbf{\color{acgold}Hard}
+    }
+    \begin{itemize}
+        \item 처음 푼 팀: \textbf{떨거지들}, 77분
+        \item 처음 푼 팀(Open Contest): \textbf{choisang0826}, 29분
+        \item 출제자: 박찬솔
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\probno{}. \probtitle{}}
+    \begin{itemize}
+        \item $K=\sum{A_i}$가 15 이하이므로 $2^K$가지 경우를 모두 확인하는 풀이를 시도해 볼 수 있습니다.
+        \item 각 경우마다 아래 세 가지 조건을 확인하면 됩니다.
+        \begin{itemize}
+            \item 각 그룹에서 1개 이하의 과목을 선택했는가?
+            \item 강의 시간이 겹치는 과목이 없는가?
+            \item 선택한 강의의 학점 합이 22인가?
+        \end{itemize}
+    \end{itemize}
+\end{frame}

@@ -1,0 +1,117 @@
+\def\probno{D}
+\def\probtitle{미로 탈출}
+
+\section{\probno{}. \probtitle{}}
+
+\begin{frame} % No title at first slide
+    \sectiontitle{\probno{}}{\probtitle{}}
+    \sectionmeta{
+        \texttt{case\_work}\\
+        출제진 의도 -- \textbf{\color{acsilver}Medium}
+    }
+    \begin{itemize}
+        \item 처음 푼 팀: \textbf{↑↑ 곧 따라잡힐 예정}, 31분
+        \item 처음 푼 팀(Open Contest): \textbf{golazcc83}, 13분
+        \item 출제자: 오주원
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\probno{}. \probtitle{}}
+    \begin{itemize}
+        \item $S < E$일 때의 풀이만 작성합니다.
+        \item $S > E$이면 두 값을 뒤집은 다음 같은 방법으로 해결할 수 있습니다.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\probno{}. \probtitle{}}
+    \begin{itemize}
+        \item $S$와 $E$를 기준으로 $5$개의 구역으로 나눌 수 있습니다.
+        \begin{enumerate}
+            \item $A \rightarrow [1, S-1]$
+            \item $S \rightarrow [S, S]$
+            \item $B \rightarrow [S+1, E-1]$
+            \item $E \rightarrow [E, E]$
+            \item $C \rightarrow [E+1, N]$
+        \end{enumerate}
+        \item $S$와 $E$의 값에 따라서 $A$, $B$, $C$는 존재하지 않을 수 있습니다.
+        \item $A, B, C$의 존재 여부에 따른 $2^3=8$가지 상황을 모두 생각해 봅시다.
+        \item 8가지 상황 모두 중복 방문 없이 $N-1$번의 이동/순간 이동으로 탈출하는 방법이 존재합니다.
+        \item 따라서 중복 방문을 하지 않으면서 순간 이동의 횟수를 최소화하는 방법을 찾으면 됩니다.
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{\probno{}. \probtitle{}}
+    \begin{itemize}
+        \item $A, B, C$가 존재하지 않는 경우
+        \begin{itemize}
+            \item $N = 2$일 때만 가능하며, 비용을 소모하지 않고 탈출할 수 있습니다.
+        \end{itemize}
+        \vspace{2mm}
+        \item $A, C$가 존재하지 않는 경우
+        \begin{itemize}
+            \item $S = 1, E = N$일 때만 가능하며, 비용을 소모하지 않고 탈출할 수 있습니다.
+        \end{itemize}
+        \vspace{2mm}
+        \item $B$가 존재하지 않는 경우 / $B, C$가 존재하지 않는 경우
+        \begin{itemize}
+            \item $E$를 마지막에 방문하기 위해 $A$로 먼저 이동하면, 순간 이동 없이 $E$로 돌아갈 수 없습니다.
+            \item $S$에서 $1$로 이동한 뒤, $N$으로 순간 이동하고 $E$로 이동하면 비용을 최소화할 수 있습니다.
+            \item $1$의 비용으로 탈출할 수 있습니다.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\probno{}. \probtitle{}}
+    \begin{itemize}
+        \item $A, B$가 존재하지 않는 경우
+        \begin{itemize}
+            \item $S = 1, E = 2, N > 2$인 상황입니다.
+            \item 순간 이동 없이 $S$에서 $E$를 거치지 않고 $C$로 이동할 수 없습니다.
+            \item 따라서 $N$으로 순간 이동한 다음 $E$로 이동하면 비용을 최소화할 수 있습니다.
+            \item $1$의 비용으로 탈출할 수 있습니다.
+        \end{itemize}
+        \vspace{2mm}
+        \item $A$가 존재하지 않는 경우
+        \begin{itemize}
+            \item 마찬가지로, 순간 이동 없이 $S$에서 $E$를 거치지 않고 $C$로 이동할 수 없습니다.
+            \item $1$에서 $E-1$로 이동한 뒤, $N$으로 순간 이동한 다음 $E$까지 이동하면 탈출할 수 있습니다.
+            \item $1$의 비용으로 탈출할 수 있습니다.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\probno{}. \probtitle{}}
+    \begin{itemize}
+        \item $A, B, C$가 모두 존재하는 경우
+        \begin{itemize}
+            \item $B$ 구역에 진입하기 위해서는 반드시 $S$ 또는 $E$를 거쳐야 합니다.
+            \item 따라서 처음에 $B$로 이동해야 중복 방문을 방지할 수 있습니다.
+            \item 이후 $A, C$를 방문해야 하는데, 구역을 이동할 때는 순간 이동을 사용해야만 합니다.
+            \item 따라서 최소 $2$번의 순간 이동이 필요하고, 항상 $2$번의 순간 이동으로 모두 방문할 수 있습니다.
+            
+            \begin{enumerate}
+                \item $S$에서 $E-1$로 이동해서 $B$ 모두 방문
+                \item $1$로 순간 이동한 다음 $S-1$로 이동해서 $A$ 모두 방문
+                \item $N$으로 순간 이동한 다음 $E$로 이동해서 $C$ 모두 방문 후 탈출
+            \end{enumerate}
+            
+        \end{itemize}
+        \vspace{2mm}
+        \item $C$가 존재하지 않는 경우
+        \begin{itemize}
+            \item 같은 방법으로 $2$번의 순간 이동으로 중복 방문 없이 탈출할 수 있습니다.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\probno{}. \probtitle{}}
+    \begin{itemize}
+        \item 8가지 상황을 모두 정리하면, 다음과 같은 결론을 얻을 수 있습니다.
+        \begin{enumerate}
+            \item $S$와 $E$가 양 끝에 있으면 정답은 $0$
+            \item $S$가 끝에 있거나 $S$와 $E$가 인접한 위치에 있으면 정답은 $1$
+            \item (1), (2)에 해당하지 않으면 정답은 $2$
+        \end{enumerate}
+    \end{itemize}
+\end{frame}

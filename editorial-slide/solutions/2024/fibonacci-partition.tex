@@ -1,0 +1,51 @@
+\def\probno{F}
+\def\probtitle{피보나치 기념품}
+
+\section{\probno{}. \probtitle{}}
+
+\begin{frame} % No title at first slide
+    \sectiontitle{\probno{}}{\probtitle{}}
+    \sectionmeta{
+        \texttt{math, ad\_hoc, constructive, case\_work}\\
+        출제진 의도 -- \textbf{\color{acsilver}Medium}
+    }
+    \begin{itemize}
+        \item 처음 푼 팀: \textbf{떨거지들}, 32분
+        \item 처음 푼 팀(Open Contest): \textbf{nflight11}, 16분
+        \item 출제자: 나정휘
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\probno{}. \probtitle{}}
+    \begin{itemize}
+        \item 피보나치 수열은 다음과 같이 정의되는 수열입니다.
+        \begin{itemize}
+            \item $F_1 = F_2 = 1$
+            \item $F_n = F_{n-1} + F_{n-2}$ (단, $n \ge 3$)
+        \end{itemize}
+        \item $N \equiv 1 \pmod 3$ 이면 $F_1$를 제외한 나머지, 그렇지 않으면 모든 기념품을 나눠줄 수 있습니다.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\probno{}. \probtitle{}}
+    \begin{itemize}
+        \item \textbf{관찰:} 길이가 3의 배수인 $F$의 연속한 부분 수열은 항상 합이 같게 분배할 수 있습니다.
+        \begin{itemize}
+            \item $b-a+1$이 3의 배수일 때 $F$의 연속한 부분 수열 $F_a, F_{a+1}, \cdots, F_b$를 생각해 봅시다.
+            \item $b$는 $a+3k+2$ 꼴이고, 피보나치 수열의 정의에 의해 $F_{a+3k} + F_{a+3k+1} = F_{a+3k+2}$입니다.
+            \item $F_{a+2}, F_{a+5}, \cdots, F_{b}$와 나머지로 나누면 합이 같게 분배할 수 있습니다.
+        \end{itemize}
+        \item 따라서 $N \equiv 0 \pmod 3$이면 항상 $N$개의 기념품을 나눠줄 수 있습니다.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\probno{}. \probtitle{}}
+    \begin{itemize}
+        \item $N \equiv 2 \pmod 3$이면 $F_3, F_4, \cdots, F_N$을 합이 동일하게 분배할 수 있습니다.
+        \item 또한, $F_1 = F_2 = 1$ 이므로 하나씩 나눠주면 $N$개의 기념품을 모두 나눠줄 수 있습니다.
+        \vspace{5mm}
+        \item $N \equiv 1 \pmod 3$이면 $F_2, F_3, \cdots, F_N$을 합이 동일하게 분배할 수 있습니다.
+        \item 따라서 $F_2 + \cdots + F_N$은 짝수인데, $F_1 = 1$은 홀수이므로 $N$개를 모두 나눠줄 수 없습니다.
+        \item $F_1$을 제외한 $N-1$개를 나눠주면 항상 나눠주는 기념품의 개수를 최대화할 수 있습니다.
+    \end{itemize}
+\end{frame}

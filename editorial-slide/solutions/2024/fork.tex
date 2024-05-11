@@ -1,0 +1,56 @@
+\def\probno{H}
+\def\probtitle{아이템 2}
+
+\section{\probno{}. \probtitle{}}
+
+\begin{frame} % No title at first slide
+    \sectiontitle{\probno{}}{\probtitle{}}
+    \sectionmeta{
+        \texttt{dp}\\
+        출제진 의도 -- \textbf{\color{acgold}Hard}
+    }
+    \begin{itemize}
+        \item 처음 푼 팀: \textbf{떨거지들}, 128분
+        \item 처음 푼 팀(Open Contest): \textbf{lobo\_prix}, 38분
+        \item 출제자: 오주원
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\probno{}. \probtitle{}}
+    \begin{itemize}
+        \item 아이템은 다음과 같은 형태로만 가져갈 수 있습니다.
+        \begin{enumerate}
+            \item 길이가 $K$ 이상인 구간
+            \item $1$번 또는 $N$번 아이템을 포함하는 경우 길이 $K$ 미만인 구간도 가능
+            \item 선택한 구간은 모두 서로 겹치지 않음
+        \end{enumerate}
+        \item $A$의 앞과 뒤에 $0$을 $K$개씩 추가해서 (2)번 조건을 무시하고 문제를 해결합시다.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\probno{}. \probtitle{}}
+    \begin{itemize}
+        \item $D(i) := $ $A_1, A_2, \cdots, A_i$를 적당히 가져갔을 때 가치의 최댓값이라고 정의합시다.
+        \item $A_i$를 가져가지 않으면 $D(i) \leftarrow D(i-1)$입니다.
+        \item $A_i$를 가져가면 $K$개 이상 가져가야 하므로 $D(i) \leftarrow \max_{j<i-K} \left\{D(j) + \textstyle\sum_{t=j+1}^{i} A_t\right\}$입니다.
+        \item 이 점화식을 그대로 구현하면 $O(N^2)$ 또는 $O(N^3)$이므로 최적화가 필요합니다.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\probno{}. \probtitle{}}
+    \begin{itemize}
+        \item $A$의 누적 합 배열 $\textstyle S_i = \sum_{j=1}^{i} A_j$를 정의합시다.
+        \item 점화식을 $D(i) \leftarrow \max_{j < i-K} \left\{D(j) + S_i - S_j \right\}$로 다시 작성할 수 있습니다.
+        \item $\max$ 함수에서 $j$와 관계없는 항을 밖으로 빼면 $D(i) \leftarrow \max_{j<i-K} \left\{ D(j) - S_j \right\} + S_i$가 됩니다.
+        \item 즉, $D(j) - S_j$의 최댓값을 효율적으로 계산할 수 있으면 문제를 빠르게 해결할 수 있습니다.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\probno{}. \probtitle{}}
+    \begin{itemize}
+        \item $M(i) := \max_{j \le i} \left\{ D(j) - S_j \right\}$라고 정의합시다.
+        \item 최종 점화식은 $D(i) = \max\left\{ D(i-1), M(i-K) + S_i \right\}$입니다.
+        \item $D(i)$를 구하면 $M(i) = \max\left\{ M(i-1), D(i) - S_i \right\}$를 이용해 $M$을 갱신할 수 있습니다.
+        \item 따라서 전체 문제를 $O(N)$ 시간에 해결할 수 있습니다.
+    \end{itemize}
+\end{frame}
